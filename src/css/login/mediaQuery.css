@@ -1,0 +1,30 @@
+/* responsive designe */
+
+@media screen and (max-width: 1400px) {
+  .image__circle,
+  .image__edgeOne,
+  .image__edgeTwo {
+    width: 1200px;
+    height: 1200px;
+    left: 8%;
+    bottom: 14%;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .login__title {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  #root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  section.image {
+    display: none;
+  }
+}

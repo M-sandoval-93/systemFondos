@@ -1,0 +1,40 @@
+/* import system fonts (importar fuentes del sistema) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+/* system base colors (colores bases del sistema)*/
+:root {
+  --primary-color: #4474e3;
+  --secundary-color: #ffdb65;
+  --primary-font-color: #ffffff;
+  --title-color: #555;
+  --text-color: #929292e9;
+  --text-main-color: #1f1e1e;
+  --background-input: #dcdbdb78;
+  --background-button: #acc1ed;
+  --web-color: #0bc6ff;
+
+  --border-radius-box: 1rem;
+  --height-nav: 5.5rem;
+  --height-footer: 2rem;
+  --height-main: calc(var(--height-nav) + var(--height-footer));
+
+  --height-btnAside: 4rem;
+
+  --top-responsive: -5.3rem;
+}
+
+.dark-mode-variables {
+  --primary-font-color: #29292a;
+  --title-color: #f7f7f7;
+}
+
+/* normalize of the system */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
