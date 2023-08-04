@@ -1,9 +1,12 @@
 import { useRef, useState } from "react";
 
 const Form = () => {
-  const inputUserName = useRef();
-  const inputPassword = useRef();
+  const inputUserName = useRef(null);
+  const inputPassword = useRef(null);
+  const form = useRef(null);
+
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
   const handleFocus = (ref) => {
     ref.current.classList.add("focus");
@@ -22,8 +25,31 @@ const Form = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+  // data control
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(form.current);
+    // const objectData = Object.fromEntries([...data.entries()]);
+    const { UserName, Password } = Object.fromEntries([...data.entries()]);
+
+    // data validation
+    if (!UserName.trim() || !Password) return setError("Todos los campos son obligatorios");
+
+    // sending data
+    console.log(UserName);
+
+
+
+  }
+
+
+
+
+
+
+
   return (
-    <form className="login__form" method={"post"}>
+    <form className="login__form" onSubmit={handleSubmit} ref={form}>
       <div className="form__control">
         <input
           ref={inputUserName}
@@ -32,6 +58,7 @@ const Form = () => {
           placeholder="Username"
           onFocus={() => handleFocus(inputUserName)}
           onBlur={() => handleBlur(inputUserName)}
+          name="UserName"
         />
         <span className="material-icons-round">person</span>
       </div>
@@ -44,12 +71,12 @@ const Form = () => {
           placeholder="Password"
           onFocus={() => handleFocus(inputPassword)}
           onBlur={() => handleBlur(inputPassword)}
+          name="Password"
         />
         <span className="material-icons-round">lock</span>
         <span
-          className={`material-icons-round showPassword ${
-            showPassword ? "show" : ""
-          }`}
+          className={`material-icons-round showPassword ${showPassword ? "show" : ""
+            }`}
           onClick={handleShowPassword}
         >
           visibility
@@ -57,7 +84,8 @@ const Form = () => {
       </div>
 
       <a className="form__recoverPassword">Recuperar contraseña</a>
-      <button className="form__button">login</button>
+      <button type="submit" className="form__button">login</button>
+      {error != "" && error}
     </form>
   );
 };
