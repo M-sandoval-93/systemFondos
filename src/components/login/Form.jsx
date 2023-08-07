@@ -1,5 +1,10 @@
 import { useRef, useState } from "react";
 
+// trabajar la lógica del formulario con formularios controlados
+// trabajar con los eventos onSubmit y onChange
+// ver validaciones de formulario y evitar la injeccion de SQL
+// pasar protección al back además del front
+
 const Form = () => {
   const inputUserName = useRef(null);
   const inputPassword = useRef(null);
@@ -28,25 +33,19 @@ const Form = () => {
   // data control
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
+
     const data = new FormData(form.current);
-    // const objectData = Object.fromEntries([...data.entries()]);
     const { UserName, Password } = Object.fromEntries([...data.entries()]);
 
     // data validation
-    if (!UserName.trim() || !Password) return setError("Todos los campos son obligatorios");
+    if (!UserName.trim() || !Password)
+      return setError("Todos los campos son obligatorios");
 
     // sending data
     console.log(UserName);
-
-
-
-  }
-
-
-
-
-
-
+    console.log(Password);
+  };
 
   return (
     <form className="login__form" onSubmit={handleSubmit} ref={form}>
@@ -75,8 +74,9 @@ const Form = () => {
         />
         <span className="material-icons-round">lock</span>
         <span
-          className={`material-icons-round showPassword ${showPassword ? "show" : ""
-            }`}
+          className={`material-icons-round showPassword ${
+            showPassword ? "show" : ""
+          }`}
           onClick={handleShowPassword}
         >
           visibility
@@ -84,7 +84,9 @@ const Form = () => {
       </div>
 
       <a className="form__recoverPassword">Recuperar contraseña</a>
-      <button type="submit" className="form__button">login</button>
+      <button type="submit" className="form__button">
+        login
+      </button>
       {error != "" && error}
     </form>
   );
