@@ -6,58 +6,77 @@ import { useRef, useState } from "react";
 // pasar protección al back además del front
 
 const Form = () => {
+  // visual contron form style ------------>
   const inputUserName = useRef(null);
   const inputPassword = useRef(null);
-  const form = useRef(null);
-
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
-  const handleFocus = (ref) => {
-    ref.current.classList.add("focus");
-    ref.current.nextElementSibling.classList.add("focus");
-  };
+  // manage input style
+  const handleStyle = (ref, state) => {
+    const isEmpty = ref.current.value.trim() === "";
+    const classAction = !state && isEmpty ? "remove" : "add";
 
-  const handleBlur = (ref) => {
-    if (ref.current.value === "") {
-      ref.current.classList.remove("focus");
-      ref.current.nextElementSibling.classList.remove("focus");
-    }
-  };
+    ref.current.classList[classAction]("focus");
+    ref.current.nextElementSibling.classList[classAction]("focus");
+  }
 
+  // functino to control password visibility
   const handleShowPassword = (e) => {
     e.preventDefault();
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  // data control
+
+
+  // data for login
+  const [data, setData] = useState({
+    userName: "",
+    password: "",
+  });
+
+  const {userName, password} = data;
+
+  const handleChangeData = (e) => {
+    const { name, value } = e.target;
+
+    setData(() => ({ ...data, [name]: value }));
+  }
+
+
+  // control data
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError("");
+    // setError("");
+    console.log(userName, password);
 
-    const data = new FormData(form.current);
-    const { UserName, Password } = Object.fromEntries([...data.entries()]);
+
+    // const data = new FormData(form.current);
+    // const { UserName, Password } = Object.fromEntries([...data.entries()]);
 
     // data validation
-    if (!UserName.trim() || !Password)
-      return setError("Todos los campos son obligatorios");
+    // if (!UserName.trim() || !Password)
+    //   return setError("Todos los campos son obligatorios");
 
     // sending data
-    console.log(UserName);
-    console.log(Password);
+    // console.log(UserName);
+    // console.log(Password);
   };
 
+
+
   return (
-    <form className="login__form" onSubmit={handleSubmit} ref={form}>
+    <form className="login__form" onSubmit={handleSubmit}>
       <div className="form__control">
         <input
           ref={inputUserName}
           type="text"
           className="input"
           placeholder="Username"
-          onFocus={() => handleFocus(inputUserName)}
-          onBlur={() => handleBlur(inputUserName)}
-          name="UserName"
+          onFocus={() => handleStyle(inputUserName, true)}
+          onBlur={() => handleStyle(inputUserName, false)}
+          name="userName"
+          onChange={handleChangeData}
         />
         <span className="material-icons-round">person</span>
       </div>
@@ -68,15 +87,15 @@ const Form = () => {
           type={showPassword ? "text" : "password"}
           className="input"
           placeholder="Password"
-          onFocus={() => handleFocus(inputPassword)}
-          onBlur={() => handleBlur(inputPassword)}
-          name="Password"
+          onFocus={() => handleStyle(inputPassword, true)}
+          onBlur={() => handleStyle(inputPassword, false)}
+          name="password"
+          onChange={handleChangeData}
         />
         <span className="material-icons-round">lock</span>
         <span
-          className={`material-icons-round showPassword ${
-            showPassword ? "show" : ""
-          }`}
+          className={`material-icons-round showPassword ${showPassword ? "show" : ""
+            }`}
           onClick={handleShowPassword}
         >
           visibility
@@ -87,9 +106,10 @@ const Form = () => {
       <button type="submit" className="form__button">
         login
       </button>
-      {error != "" && error}
+      {/* {error != "" && error} */}
     </form>
   );
+
 };
 
 export default Form;
