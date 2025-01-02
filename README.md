@@ -1,6 +1,8 @@
 # Diseño login
+
 Diseño de un login responsive para utilizar en el control de acceso de una aplicacion web.
 El diseño cuenta con las siguiente características:
+
 - Responsive
 - Animaciones
 - Estilos con css
@@ -15,8 +17,7 @@ El diseño cuenta con las siguiente características:
     <img src="https://img.shields.io/badge/React-222222.svg?logo=React&logoColor=61DAFB" alt="logo react">
 </p>
 
-![https://github.com/svtech-code](./public/img_login.png)
-
+![https://github.com/svtech-code](./public/img.png)
 
 ## Descarga y uso
 
