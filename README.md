@@ -1,17 +1,24 @@
-# Diseño para login
+# Diseño login
+Diseño de un login responsive para utilizar en el control de acceso de una aplicacion web.
+El diseño cuenta con las siguiente características:
+- Responsive
+- Animaciones
+- Estilos con css
+
+<p align="center">
+    <img src="https://img.shields.io/badge/npm-CB3837.svg?logo=npm&logoColor=white" alt="logo npm">
+  &nbsp;
+    <img src="https://img.shields.io/badge/vite-%23646CFF?logo=vite&logoColor=%23FFD62E" alt="logo vaite">
+  &nbsp;
+    <img src="https://img.shields.io/badge/CSS3-1572B6.svg?logo=css3&logoColor=white" alt="logo css3">
+  &nbsp;
+    <img src="https://img.shields.io/badge/React-222222.svg?logo=React&logoColor=61DAFB" alt="logo react">
+</p>
 
 ![https://github.com/svtech-code](./public/img_login.png)
 
-Diseño de un login responsive para implementar en alguna alicación web.
 
-Las tecnologías utilizadas en este diseño son:
-
-- Vite
-- Npm
-- React JS
-- css3
-
-## Descarga
+## Descarga y uso
 
 Puedes descargar el proyecto clonando el repositorio e instalar las dependencias para poder modificarlos a gusto. Para ello, necesitas hacer lo siguiente:
 
