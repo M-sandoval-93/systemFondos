@@ -17,8 +17,8 @@
 ![https://github.com/svtech-code](./public/img.png)
 
 ## 📑 Descripción
-Diseño del template para un login responsive, que puede ser utilizado en el control de acceso de una aplicacion web.
-El diseño cuenta con las siguiente características:
+Diseño de un template para un login responsive, que puede ser utilizado en el control de acceso de una aplicacion web.
+El diseño cuenta con las siguientes características:
 - Responsive
 - Animaciones
 - Estilos con css
